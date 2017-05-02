@@ -1,0 +1,134 @@
+<html>
+<head>
+<style>
+body  {
+    background-image: url("paper.jpg");
+   }
+
+#borderimg1 { 
+    border: 10px solid transparent;
+    padding: 15px;
+    border-image-source: url(circle.png);
+    border-image-repeat: round;
+    border-image-slice: 30;
+    border-image-width: 10px;        
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 10px 20px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button5 {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+	border-radius: 12px;
+}
+
+.button5:hover {
+    background-color: #555555;
+    color: white;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+a{
+	text-decoration:none;
+	color: 000000;
+}
+#paymentdiv{
+	height:425; 
+	width:425; 
+	border:4px; 
+	border-style:solid;
+	border-radius: 10px;
+	font-size: 20px;
+}
+</style>
+<script>
+function cardno(card_no){
+	var card=card_no.length;
+	if(card!=16){
+	alert('Enter 16 digit card no!');
+	}
+}
+function cvv_validate(cvv){
+	var cvvl=cvv.length;
+	if(cvvl!=3){
+	alert('Enter a 3 digit CVV!');
+	}
+}
+function expiry_date(exd){
+	if(exd<2017){
+	alert('The expiry date of your card has been exceeded!')
+	}
+}
+function name_validate(chname){
+	if(chname==''){
+	alert('Please enter your name!');}
+}
+</script>
+</head>
+<body>
+<center>
+<div id='borderimg1'><h1>MyShoppingCart.com</h1></div><br>
+<button class="button button5"><a href="i1_user1.php">HOME</a></button>
+<button class="button button5"><a href="i1_index.html">ADMIN LOG IN</a></button>
+<button class="button button5"><a href="logout.php">USER LOG OUT</a></button>
+<br><br>
+<div id="paymentdiv"><br>
+<form method="post" action="pay.php">
+<table>
+<tr><td>CARD TYPE :</td><td><select>
+<option value="CREDIT">CREDIT</OPTION>
+<option value="CREDIT">DEBIT</OPTION>
+<option value="CREDIT">ATM</OPTION>
+</SELECT></td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>CARD NUMBER :</td><td><input type="number" name="card_no" value="card_no" onblur="cardno(this.value)"></td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>CVV :</td><td><input type="password" name="cvv" value="cvv" onblur="cvv_validate(this.value)"></td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>EXPIRY DATE :</td><td><select name="exd" onblur="expiry_date(this.value)">
+<option value="2015">2015</option>
+<option value="2016">2016</option>
+<option value="2017">2017</option>
+<option value="2018">2018</option>
+<option value="2019">2019</option>
+</select>
+<select>
+<option value="JAN">JAN</option>
+<option value="FEB">FEB</option>
+<option value="MAR">MAR</option>
+<option value="APR">APR</option>
+<option value="MAY">MAY</option>
+<option value="JUNE">JUNE</option>
+<option value="JULY">JULY</option>
+<option value="AUG">AUG</option>
+<option value="SEP">SEP</option>
+<option value="OCT">OCT</option>
+<option value="NOV">NOV</option>
+<option value="DEC">DEC</option>
+</SELECT></td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>CARDHOLDER NAME :</td><td><input type="text" onblur="name_validate(this.value)"></td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>ENTER CODE :</td><td><input type="text" name="code"></td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td></td><td><img src="captcha.php"></td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+</table>
+<input type="submit" class="button button5" value="PAY NOW">
+</form>
+</div>
+</center>
+</body>
+</html>

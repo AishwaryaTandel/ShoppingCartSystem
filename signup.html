@@ -1,0 +1,88 @@
+<html>
+<head>
+<style>
+body  {
+    background-image: url("paper.jpg");
+   }
+
+#borderimg1 { 
+    border: 10px solid transparent;
+    padding: 15px;
+    border-image-source: url(circle.png);
+    border-image-repeat: round;
+    border-image-slice: 30;
+    border-image-width: 10px;        
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 10px 20px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button5 {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+	border-radius: 12px;
+}
+
+.button5:hover {
+    background-color: #555555;
+    color: white;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+a{
+	text-decoration:none;
+	color: 000000;
+}
+#userdiv{
+	height:400; 
+	width:425; 
+	border:4px; 
+	border-style:solid;
+	border-radius: 10px;
+	font-size: 20px;
+}
+</style>
+<script>
+function validate(){
+	var name=document.getElementById('name').value;  
+	var pwd=document.getElementById('pwd').value;
+	var http=new XMLHttpRequest;
+	http.open("POST","signup.php?name="+name+"&pwd="+pwd,"true");
+	http.send();
+	http.onreadystatechange=function(){
+	if(http.readyState==4){
+		var res=http.responseText;
+		alert(res);
+		} 
+	}
+}
+</script>
+</head>
+<body>
+<center>
+<div id='borderimg1'><h1>MyShoppingCart.com</h1></div><br><br><br>
+<button class="button button5"><a href="i1_user1.php">HOME</a></button>
+<button class="button button5"><a href="i1_index.html">ADMIN LOG IN</a></button>
+<button class="button button5"><a href="i1_userregister.html">USER REGISTRATION</a></button>
+<button class="button button5"><a href="signup.html">USER SIGN UP</a></button>
+<br><br><br>
+<div id="userdiv">
+<h3 style='text-align:center;'>USER LOGIN</H3>
+NAME:<input type="text" name="name" id="name"><br><br><br>
+PASSWORD:<input type="password" name="pwd" id="pwd"><br><br><br>
+<input type="button" class="button button5" value="USER LOG IN" onclick="validate()"> 
+</div>
+</center>
+</body>
+</html>

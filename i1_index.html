@@ -1,0 +1,96 @@
+<html>
+<head>
+<style>
+body  {
+    background-image: url("paper.jpg");
+   }
+
+#borderimg1 { 
+    border: 10px solid transparent;
+    padding: 15px;
+    border-image-source: url(circle.png);
+    border-image-repeat: round;
+    border-image-slice: 30;
+    border-image-width: 10px;        
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 10px 20px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button5 {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+	border-radius: 12px;
+}
+
+.button5:hover {
+    background-color: #555555;
+    color: white;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+a{
+	text-decoration:none;
+	color: 000000;
+}
+#admindiv{
+	height:400; 
+	width:425; 
+	border:4px; 
+	border-style:solid;
+	border-radius: 10px;
+	font-size: 20px;
+}
+</style>
+<script>
+function validate(nm,ps){
+    var nm=document.getElementById("name").value;
+	var ps=document.getElementById("pass").value;
+	var http;
+    http=new XMLHttpRequest();
+    http.onreadystatechange=function(){
+		if(http.readyState == 4) {
+			document.getElementById('span1').innerHTML = http.responseText;
+			var response=http.responseText;
+			if(response=="Go ahead"){
+			document.getElementById('submit_div').innerHTML="<input type='submit' class='button button5' value='Log In'>";}
+		}
+	}
+	http.open("GET","i1_log.php?name="+nm+"&pass="+ps,true);
+	http.send();
+}
+</script>
+</head>
+<body>
+<center>
+<div id='borderimg1'><h1>MyShoppingCart.com</h1></div><br><br><br>
+<button class="button button5"><a href="i1_user1.php">HOME</a></button>
+<button class="button button5"><a href="i1_index.html">ADMIN LOG IN</a></button>
+<button class="button button5"><a href="i1_userregister.html">USER REGISTRATION</a></button>
+<button class="button button5"><a href="signup.html">USER SIGN UP</a></button>
+<br><br><br>
+<div id="admindiv">
+<form action="i1_addproduct.html" method="post">
+<h3 style='text-align:center'>ENTER YOUR LOGIN CREDENTIALS</h3><br><br>
+<b>Enter your name :</b>
+<input type="text" name="name" id="name"/><br><br>
+<b>Enter your password :</b>
+<input type="password" name="pass" id="pass" onblur="validate(name.value,this.value)"/><br><br>
+<span id="span1"></span><br><br>
+<div id="submit_div"></div>
+</form>
+</div>
+</center>
+</body>
+</html>
